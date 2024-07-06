@@ -1,5 +1,6 @@
 package t;
 
+import RemoveLastCharacter2.RemoveLastCharacter2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -21,9 +22,13 @@ public class T {
             driver.findElement(By.name("password")).sendKeys("SuperSecretPassword!");
             driver.findElement(By.className("radius")).click();
             String actualResult = driver.findElement(By.id("flash")).getText();
-            String expectedResult = "You logged into a secure area!";
+            actualResult=  actualResult.replaceAll("\\s+"," ");
+            RemoveLastCharacter2 rlc = new RemoveLastCharacter2();
+            //actualResult.rlc(actualResult.length()-1);
+            actualResult=rlc.removeLastChar(actualResult);
+            String expectedResult = "You logged into a secure area! ";
             assertEquals(actualResult,expectedResult);
-            assertTrue(actualResult.contains(expectedResult));
+           // assertTrue(actualResult.contains(expectedResult));
 
     }
 /*
