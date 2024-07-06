@@ -8,4 +8,10 @@ public class RemoveLastCharacter2 {
 //returns the string after removing the last character
         return s.substring(0, s.length() - 1);
     }
+
+    public String removeLastChar2(String s)
+    {
+//returns the string after removing the last character
+        return s.substring(0, s.length() - 2);
+    }
 }
