@@ -16,10 +16,15 @@ public class T {
     @Test
     public void tCase1(){
             driver.get("https://the-internet.herokuapp.com/");
-            driver.findElement(By.linkText("Form Authentication")).click();
-            driver.findElement(By.name("username")).sendKeys("tomsmith");
+           // driver.findElement(By.linkText("Form Authentication")).click();
+            driver.findElement(By.partialLinkText("Form Authentication")).click();
+           // driver.findElement(By.name("username")).sendKeys("tomsmith");
+           driver.findElement(By.cssSelector("input[name='username']")).sendKeys("tomsmith");
+
             driver.findElement(By.name("password")).sendKeys("SuperSecretPassword!");
-            driver.findElement(By.className("radius")).click();
+
+            driver.findElement(By.cssSelector("[class='radius']")).click();
+            //driver.findElement(By.className("radius")).click();
 
             String actualResult = driver.findElement(By.id("flash")).getText();
             actualResult=  actualResult.replaceAll("\\s+"," ");
@@ -30,7 +35,7 @@ public class T {
 
             assertEquals(actualResult,expectedResult);
            // assertTrue(actualResult.contains(expectedResult));
-           driver.quit();
+           //driver.quit();
     }
 
     @Test
@@ -49,7 +54,7 @@ public class T {
         String expectedResult = "Your password is invalid!";
         assertEquals(actualResult,expectedResult);
         assertTrue(actualResult.contains(expectedResult));
-        driver.quit();
+       // driver.quit();
     }
 
 
