@@ -1,8 +1,8 @@
 package UploadFile;
 
 import BaseClass.BaseClass;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import Pages.SecurePage;
+import Pages.UploadFilePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -12,17 +12,23 @@ public class UploadFileClass extends BaseClass {
 
     @Test
     public void uploadFile(){
-        driver.findElement(By.linkText("File Upload")).click();
 
-        WebElement chooseFile = driver.findElement(By.id("file-upload"));
+        UploadFilePage uploadFilePage = homePage.clickOnUploadFilePage();
+        uploadFilePage.clickOnChoosefile("D:/rr1.png");
+        uploadFilePage.fileUpload();
+        SecurePage securePage = uploadFilePage.clickOnFileUpload();
 
-        chooseFile.sendKeys("D:/rr1.png");
+       // driver.findElement(By.linkText("File Upload")).click();
 
-        driver.findElement(By.id("file-submit")).click();
+       // WebElement chooseFile = driver.findElement(By.id("file-upload"));
 
-        WebElement fileName = driver.findElement(By.id("uploaded-files"));
+      //  chooseFile.sendKeys("D:/rr1.png");
 
-        Assert.assertEquals("rr1.png", fileName.getText());
+       // driver.findElement(By.id("file-submit")).click();
+
+       // WebElement fileName = driver.findElement(By.id("uploaded-files"));
+
+        Assert.assertEquals("rr1.png", securePage.validateFileNameContent());
 
     }
 

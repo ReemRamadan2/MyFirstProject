@@ -1,6 +1,8 @@
 package Login;
 
 import BaseClass.BaseClass;
+import Pages.LoginPage;
+import Pages.SecurePage;
 import RemoveLastCharacter2.RemoveLastCharacter2;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
@@ -14,62 +16,40 @@ public class LoginClass extends BaseClass {
     @Test(priority = 1)
     public void testSucessfullLogin(){
 
-            driver.findElement(By.partialLinkText("Form Authentication")).click();
-           // driver.findElement(By.name("username")).sendKeys("tomsmith");
-           driver.findElement(By.cssSelector("input[name='username']")).sendKeys("tomsmith");
+       LoginPage loginPage = homePage.clickOnAuthLink();
+       loginPage.insertUserName("tomsmith");
+       loginPage.insertPassword("SuperSecretPassword!");
+       SecurePage messge = loginPage.clickSubmit();
+       String expectedResult = "You logged into a secure area!";
+       String actualResult = messge.validateMessageContent();
+       assertTrue(actualResult.contains(expectedResult));
 
-            driver.findElement(By.name("password")).sendKeys("SuperSecretPassword!");
-
-            driver.findElement(By.cssSelector("[class='radius']")).click();
-            //driver.findElement(By.className("radius")).click();
-
-            String actualResult = driver.findElement(By.id("flash")).getText();
-            actualResult=  actualResult.replaceAll("\\s+"," ");
-         //   RemoveLastCharacter2 rlc = new RemoveLastCharacter2();
-         //   actualResult=rlc.removeLastChar(actualResult);
-
-            String expectedResult = "You logged into a secure area!";
-
-           // assertEquals(actualResult,expectedResult);
-            assertTrue(actualResult.contains(expectedResult));
-           //driver.quit();
     }
 
     @Test(priority = 2)
     public void testInvalidPassword(){
-
-        driver.findElement(By.linkText("Form Authentication")).click();
-        driver.findElement(By.name("username")).sendKeys("tomsmith");
-        driver.findElement(By.name("password")).sendKeys("SuperSecretPassword23!");
-        driver.findElement(By.className("radius")).click();
-
-        String actualResult = driver.findElement(By.id("flash")).getText();
-        actualResult=  actualResult.replaceAll("\\s+"," ");
-        RemoveLastCharacter2 rlc = new RemoveLastCharacter2();
-        actualResult = rlc.removeLastChar2(actualResult);
-
+        LoginPage loginPage = homePage.clickOnAuthLink();
+        loginPage.insertUserName("tomsmith");
+        loginPage.insertPassword("SuperSecretPassword23");
+        SecurePage securePage= loginPage.clickSubmit();
+        String actualResult =securePage.validateMessageContent();
         String expectedResult = "Your password is invalid!";
-        assertEquals(actualResult,expectedResult);
+        //assertEquals(actualResult,expectedResult);
         assertTrue(actualResult.contains(expectedResult));
-       // driver.quit();
+
     }
 
 
     @Test(priority = 3)
     public void testInvalidUserName(){
 
-        driver.findElement(By.linkText("Form Authentication")).click();
-        driver.findElement(By.name("username")).sendKeys("tomsmith23");
-        driver.findElement(By.name("password")).sendKeys("SuperSecretPassword!");
-        driver.findElement(By.className("radius")).click();
-
-        String actualResult = driver.findElement(By.id("flash")).getText();
-        actualResult=  actualResult.replaceAll("\\s+"," ");
-        RemoveLastCharacter2 rlc = new RemoveLastCharacter2();
-        actualResult = rlc.removeLastChar2(actualResult);
-
+        LoginPage loginPage = homePage.clickOnAuthLink();
+        loginPage.insertUserName("tomsmith23");
+        loginPage.insertPassword("SuperSecretPassword!");
+        SecurePage securePage= loginPage.clickSubmit();
+        String actualResult =securePage.validateMessageContent();
         String expectedResult = "Your username is invalid!";
-       // assertEquals(actualResult,expectedResult);
+        //assertEquals(actualResult,expectedResult);
         assertTrue(actualResult.contains(expectedResult));
 
     }

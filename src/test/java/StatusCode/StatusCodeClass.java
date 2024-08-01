@@ -1,6 +1,8 @@
 package StatusCode;
 
 import BaseClass.BaseClass;
+import Pages.SecurePage;
+import Pages.StatusCodePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -12,42 +14,44 @@ public class StatusCodeClass extends BaseClass {
 
     @Test(priority = 1)
     public void stutsCode200(){
-        driver.findElement(By.linkText("Status Codes")).click();
-        driver.findElement(By.linkText("200")).click();
-        WebElement acualMessage = driver.findElement(By.xpath("//p[contains(text(),'This page returned a 200 status code.')]"));
+        StatusCodePage statusCodePage = homePage.clickOnStatusCode();
+
+        SecurePage securePage = statusCodePage.stutsCode200();
+
         Assert.assertEquals("This page returned a 200 status code." + "\n" + "\n" +
 
-                "For a definition and common list of HTTP status codes, go here",acualMessage.getText());
+                "For a definition and common list of HTTP status codes, go here",securePage.validateStatus200Content());
     }
 
     @Test(priority = 2)
     public void stutsCode301(){
-        driver.findElement(By.linkText("Status Codes")).click();
-        driver.findElement(By.linkText("301")).click();
-        WebElement acualMessage = driver.findElement(By.xpath("//p[contains(text(),'This page returned a 301 status code.')]"));
+        StatusCodePage statusCodePage = homePage.clickOnStatusCode();
+
+        SecurePage securePage = statusCodePage.stutsCode301();
+
         Assert.assertEquals("This page returned a 301 status code." + "\n" + "\n" +
 
-                "For a definition and common list of HTTP status codes, go here",acualMessage.getText());
+                "For a definition and common list of HTTP status codes, go here",securePage.validateStatus301Content());
     }
 
     @Test(priority = 3)
     public void stutsCode404(){
-        driver.findElement(By.linkText("Status Codes")).click();
-        driver.findElement(By.linkText("404")).click();
-        WebElement acualMessage = driver.findElement(By.xpath("//p[contains(text(),'This page returned a 404 status code.')]"));
+        StatusCodePage statusCodePage = homePage.clickOnStatusCode();
+
+        SecurePage securePage = statusCodePage.stutsCode404();
         Assert.assertEquals("This page returned a 404 status code." + "\n" + "\n" +
 
-                "For a definition and common list of HTTP status codes, go here",acualMessage.getText());
+                "For a definition and common list of HTTP status codes, go here",securePage.validateStatus404Content());
     }
 
     @Test(priority = 4)
     public void stutsCode500(){
-        driver.findElement(By.linkText("Status Codes")).click();
-        driver.findElement(By.linkText("500")).click();
-        WebElement acualMessage = driver.findElement(By.xpath("//p[contains(text(),'This page returned a 500 status code.')]"));
-        Assert.assertEquals("This page returned a 500 status code." + "\n" + "\n" +
+        StatusCodePage statusCodePage = homePage.clickOnStatusCode();
 
-                "For a definition and common list of HTTP status codes, go here",acualMessage.getText());
+        SecurePage securePage = statusCodePage.stutsCode500();
+       Assert.assertEquals("This page returned a 500 status code." + "\n" + "\n" +
+
+                "For a definition and common list of HTTP status codes, go here",securePage.validateStatus500Content());
     }
 
 }

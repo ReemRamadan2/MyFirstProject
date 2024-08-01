@@ -1,25 +1,23 @@
 package ForgetPassword;
 
 import BaseClass.BaseClass;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import Pages.ForgetPasswordPage;
+import Pages.SecurePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import static org.testng.Assert.assertTrue;
 
 public class ForgetPasswordClass extends BaseClass {
 
     @Test(priority = 1)
     public void invalidEmail(){
-        driver.findElement(By.linkText("Forgot Password")).click();
-        driver.findElement(By.name("email")).sendKeys("reem@gmail.com");
-        driver.findElement(By.className("radius")).click();
 
-      //  String redirectURL=driver.getCurrentUrl();
-        WebElement message =  driver.findElement(By.xpath("//h1[contains(text(),\"Internal Server Error\")]"));
+        ForgetPasswordPage forgetPassword = homePage.clickOnForgetPassword();
 
-        Assert.assertEquals("Internal Server Error", message.getText());
+        forgetPassword.inssertEmail("reem@gmail.com");
+
+        SecurePage securePage = forgetPassword.clickSubmit();
+
+        Assert.assertEquals("Internal Server Error", securePage.validateEmailMessageContent());
 
 
     }
