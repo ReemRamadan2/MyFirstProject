@@ -3,41 +3,34 @@ package Checkboxes;
 import BaseClass.BaseClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
-import java.util.List;
 
 public class CheckboxesClass extends BaseClass {
 
     @Test(priority = 1)
-    public void testSelectAllcheckList(){
+    public void testCheckboxOne() {
         driver.findElement(By.linkText("Checkboxes")).click();
-        List<WebElement> chkBoxes = driver.findElements(By.cssSelector("input[type='checkbox']"));
-        int size =chkBoxes.size();
+        WebElement boxOne = driver.findElement(By.xpath("(//input[@type='checkbox'])[1]"));
+        boxOne.click();
+        Boolean boxOneIsSelected = boxOne.isSelected();
 
-        for (int i=0; i<size; i++){
-            if (!chkBoxes.get(i).isSelected() ) {
-                chkBoxes.get(i).click();
-            }
-        }
+        assertTrue(boxOneIsSelected);
+
     }
 
     @Test(priority = 2)
-    public void selectCheckUncheckedBox(){
+    public void testCheckboxTwo() {
         driver.findElement(By.linkText("Checkboxes")).click();
-        List<WebElement> chkBoxes = driver.findElements(By.cssSelector("input[type='checkbox']"));
+        WebElement boxOne = driver.findElement(By.xpath("(//input[@type='checkbox'])[2]"));
+        boxOne.click();
+        Boolean boxOneIsSelected = boxOne.isSelected();
 
-        int size =chkBoxes.size();
+        assertFalse(boxOneIsSelected);
 
-        for (int i=0; i<size; i++) {
-            System.out.println("is  selected : "+chkBoxes.get(i).isSelected());
-                chkBoxes.get(i).click();
-        }
     }
-
-
-
 
 
 
