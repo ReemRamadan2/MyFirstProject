@@ -3,14 +3,12 @@ package StatusCode;
 import BaseClass.BaseClass;
 import Pages.SecurePage;
 import Pages.StatusCodePage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-public class StatusCodeClass extends BaseClass {
+public class StatusCodeTests extends BaseClass {
 
     @Test(priority = 1)
     public void stutsCode200(){

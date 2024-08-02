@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 
 
-public class UploadFileClass extends BaseClass {
+public class UploadFileTests extends BaseClass {
 
     @Test
     public void uploadFile(){

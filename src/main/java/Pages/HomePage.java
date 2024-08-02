@@ -18,6 +18,7 @@ public class HomePage {
     private final By statusCode = By.linkText("Status Codes");
     private final By uploadFile = By.linkText("File Upload");
     private final By dynamicLoading = By.linkText("Dynamic Loading");
+    private final By dropdwonList = By.linkText("Dropdown");
 
     public LoginPage clickOnAuthLink (){
         _driver.findElement(authLink).click();
@@ -49,5 +50,9 @@ public class HomePage {
         return new DynamicLoadingPage(_driver);
     }
 
+    public DropdwonPage clickOnDropdwonPage(){
+        _driver.findElement(dropdwonList).click();
+        return new DropdwonPage(_driver);
+    }
 
 }

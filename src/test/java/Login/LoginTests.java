@@ -3,14 +3,12 @@ package Login;
 import BaseClass.BaseClass;
 import Pages.LoginPage;
 import Pages.SecurePage;
-import RemoveLastCharacter2.RemoveLastCharacter2;
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class LoginClass extends BaseClass {
+public class LoginTests extends BaseClass {
 
 
     @Test(priority = 1)

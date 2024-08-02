@@ -7,7 +7,7 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 
-public class CheckboxesClass extends BaseClass {
+public class CheckboxesTests extends BaseClass {
 
     @Test(priority = 1)
     public void testCheckboxOne() {

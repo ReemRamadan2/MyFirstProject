@@ -6,7 +6,7 @@ import Pages.SecurePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ForgetPasswordClass extends BaseClass {
+public class ForgetPasswordTests extends BaseClass {
 
     @Test(priority = 1)
     public void invalidEmail(){
