@@ -17,6 +17,7 @@ public class HomePage {
     private final By forgetPassword = By.linkText("Forgot Password");
     private final By statusCode = By.linkText("Status Codes");
     private final By uploadFile = By.linkText("File Upload");
+    private final By dynamicLoading = By.linkText("Dynamic Loading");
 
     public LoginPage clickOnAuthLink (){
         _driver.findElement(authLink).click();
@@ -43,7 +44,10 @@ public class HomePage {
         return new UploadFilePage(_driver);
     }
 
-
+    public DynamicLoadingPage clickOndynamicLoadingPage(){
+        _driver.findElement(dynamicLoading).click();
+        return new DynamicLoadingPage(_driver);
+    }
 
 
 }
