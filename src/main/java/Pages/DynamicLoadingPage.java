@@ -11,10 +11,16 @@ public class DynamicLoadingPage {
         _driver = driver;
     }
 
-    private final By elementOneLink = By.partialLinkText("Example 1");
+    private final By exampleOneLink = By.partialLinkText("Example 1");
+    private final By exampleTwoLink = By.partialLinkText("Example 2");
 
-    public LoadingPages clickOnElementOne(){
-        _driver.findElement(elementOneLink).click();
+    public LoadingPages clickOnExampleOne(){
+        _driver.findElement(exampleOneLink).click();
+        return new LoadingPages(_driver);
+    }
+
+    public LoadingPages clickOnExampleTwo(){
+        _driver.findElement(exampleTwoLink).click();
         return new LoadingPages(_driver);
     }
 }
