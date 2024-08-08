@@ -19,6 +19,8 @@ public class HomePage {
     private final By uploadFile = By.linkText("File Upload");
     private final By dynamicLoading = By.linkText("Dynamic Loading");
     private final By dropdwonList = By.linkText("Dropdown");
+    private final By jsAlert = By.linkText("JavaScript Alerts");
+    private final By entryAd = By.linkText("Entry Ad");
 
     public LoginPage clickOnAuthLink (){
         _driver.findElement(authLink).click();
@@ -53,6 +55,16 @@ public class HomePage {
     public DropdwonPage clickOnDropdwonPage(){
         _driver.findElement(dropdwonList).click();
         return new DropdwonPage(_driver);
+    }
+
+    public AlertPage jsAlertPage(){
+        _driver.findElement(jsAlert).click();
+        return new AlertPage(_driver);
+    }
+
+    public EntryAdPage entryAdPage(){
+        _driver.findElement(entryAd).click();
+        return new EntryAdPage(_driver);
     }
 
 }
